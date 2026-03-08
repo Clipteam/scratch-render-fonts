@@ -1,8 +1,13 @@
 {
   "name": "clipcc-render-fonts",
-  "version": "1.0.252",
+  "version": "1.0.253",
   "description": "",
   "main": "./dist/main.js",
+  "files": [
+    "dist",
+    "src",
+    "OFL.txt"
+  ],
   "author": "Clipteam",
   "homepage": "https://github.com/Clipteam/clipcc-render-fonts#readme",
   "repository": {
