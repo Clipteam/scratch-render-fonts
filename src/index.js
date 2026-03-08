@@ -1,20 +1,26 @@
+import sansSerif from './NotoSans-Medium.woff2?inline';
+import serif from './SourceSerifPro-Regular.woff2?inline';
+import handwriting from './handlee-regular.woff2?inline';
+import marker from './Knewave.woff2?inline';
+import curly from './Griffy-Regular.woff2?inline';
+import pixel from './Grand9K-Pixel.woff2?inline';
+import scratch from './Scratch.woff2?inline';
+
 // Synchronously load TTF fonts.
 // First, have Webpack load their data as Base 64 strings.
 let FONTS;
 
 const getFonts = function () {
     if (FONTS) return FONTS;
-    /* eslint-disable global-require */
     FONTS = {
-        'Sans Serif': require('base64-loader!./NotoSans-Medium.ttf'),
-        'Serif': require('base64-loader!./SourceSerifPro-Regular.otf'),
-        'Handwriting': require('base64-loader!./handlee-regular.ttf'),
-        'Marker': require('base64-loader!./Knewave.ttf'),
-        'Curly': require('base64-loader!./Griffy-Regular.ttf'),
-        'Pixel': require('base64-loader!./Grand9K-Pixel.ttf'),
-        'Scratch': require('base64-loader!./Scratch.ttf')
+        'Sans Serif': sansSerif,
+        'Serif': serif,
+        'Handwriting': handwriting,
+        'Marker': marker,
+        'Curly': curly,
+        'Pixel': pixel,
+        'Scratch': scratch
     };
-    /* eslint-enable global-require */
 
     // For each Base 64 string,
     // 1. Replace each with a usable @font-face tag that points to a Data URI.
@@ -38,4 +44,4 @@ const getFonts = function () {
     return FONTS;
 };
 
-module.exports = getFonts;
+export default getFonts;
