@@ -1,6 +1,6 @@
 {
   "name": "clipcc-render-fonts",
-  "version": "1.0.254",
+  "version": "1.0.256",
   "description": "",
   "main": "./dist/main.js",
   "files": [

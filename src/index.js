@@ -29,7 +29,7 @@ const getFonts = function () {
     for (const fontName in FONTS) {
         const fontData = FONTS[fontName];
         FONTS[fontName] = '@font-face {' +
-            `font-family: "${fontName}";src: url("${fontData}");}`;
+            `font-family: '${fontName}';src: url('${fontData}');}`;
     }
 
     if (!document.getElementById('scratch-font-styles')) {
