@@ -1,26 +1,20 @@
-import sansSerif from './NotoSans-Medium.woff2?inline';
-import serif from './SourceSerifPro-Regular.woff2?inline';
-import handwriting from './handlee-regular.woff2?inline';
-import marker from './Knewave.woff2?inline';
-import curly from './Griffy-Regular.woff2?inline';
-import pixel from './Grand9K-Pixel.woff2?inline';
-import scratch from './Scratch.woff2?inline';
-
-// Synchronously load TTF fonts.
+// Synchronously load WOFF2 fonts.
 // First, have Webpack load their data as Base 64 strings.
 let FONTS;
 
 const getFonts = function () {
     if (FONTS) return FONTS;
+    /* eslint-disable global-require */
     FONTS = {
-        'Sans Serif': sansSerif,
-        'Serif': serif,
-        'Handwriting': handwriting,
-        'Marker': marker,
-        'Curly': curly,
-        'Pixel': pixel,
-        'Scratch': scratch
+        'Sans Serif': require('base64-loader!./NotoSans-Medium.woff2'),
+        'Serif': require('base64-loader!./SourceSerifPro-Regular.woff2'),
+        'Handwriting': require('base64-loader!./handlee-regular.woff2'),
+        'Marker': require('base64-loader!./Knewave.woff2'),
+        'Curly': require('base64-loader!./Griffy-Regular.woff2'),
+        'Pixel': require('base64-loader!./Grand9K-Pixel.woff2'),
+        'Scratch': require('base64-loader!./Scratch.woff2')
     };
+    /* eslint-enable global-require */
 
     // For each Base 64 string,
     // 1. Replace each with a usable @font-face tag that points to a Data URI.
@@ -29,7 +23,7 @@ const getFonts = function () {
     for (const fontName in FONTS) {
         const fontData = FONTS[fontName];
         FONTS[fontName] = '@font-face {' +
-            `font-family: "${fontName}";src: url("${fontData}");}`;
+            `font-family: "${fontName}";src: url("data:application/x-font-woff2;charset=utf-8;base64,${fontData}");}`;
     }
 
     if (!document.getElementById('scratch-font-styles')) {
@@ -44,4 +38,4 @@ const getFonts = function () {
     return FONTS;
 };
 
-export default getFonts;
+module.exports = getFonts;
